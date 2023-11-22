@@ -14,9 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
+Route::get('/', function () {
+    return redirect('/books');
+});
+
+// Route::controller(BooksController::class)->group(function () {
+//     Route::get('/books', 'index')->name('books.index');
+//     Route::get('/books/create', 'create')->name('books.create');
+//     Route::post('/books/store', 'store')->name('books.store');
 // });
 
-Route::get('/books', [BooksController::class, 'index']);
-Route::get('/books/create', [BooksController::class, 'create']);
+Route::resource('/books', BooksController::class);

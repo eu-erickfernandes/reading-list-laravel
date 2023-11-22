@@ -2,19 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use Illuminate\Http\Request;
 
 class BooksController extends Controller
 {
     public function index(Request $request){
-        $books = [
-            'Livro 1',
-            'Livro 2',
-            'Livro 3',
-            'Livro 4'
-        ];
-
         $name = 'Érick';
+        
+        $books = Book::all();
+
 
         return view('books.index')
             ->with('name', $name)
@@ -23,5 +20,18 @@ class BooksController extends Controller
 
     public function create(Request $request){
         return view('books.create');
+    }
+
+    public function store(Request $request){
+
+        Book::create($request->all());
+
+        return to_route('books.index');
+    }
+
+    public function destroy(Request $request){
+        Book::destroy($request->book);
+
+        return to_route('books.index');
     }
 }
