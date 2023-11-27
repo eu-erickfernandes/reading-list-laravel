@@ -8,17 +8,12 @@ use Illuminate\Http\Request;
 
 class BooksController extends Controller
 {
-    public function index(Request $request){
-        $name = 'Érick';
-        
+    public function index(){
         $books = Book::all();
 
         $successMessage = session('message.success');
-        // $request->session()->forget('message.success');
-
 
         return view('books.index')
-            ->with('name', $name)
             ->with('books', $books)
             ->with('successMessage', $successMessage);
     }
@@ -30,8 +25,6 @@ class BooksController extends Controller
     public function store(BookFormRequest $request){
 
         $book = Book::create($request->all());
-
-        // $request->session()->flash('message.success', "Book '{$book->name}' created");
 
         return to_route('books.index')
             ->with('message.success', "Book '{$book->name}' created");

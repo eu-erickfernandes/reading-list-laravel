@@ -1,15 +1,15 @@
 <form action="{{ $action }}" method="post">
     @csrf
-    
+
     @isset($update)
         @method('PUT')
     @endisset
-        
+
     <label for="name-field">Name</label>
     <input 
-        id="name-field" 
-        name="name" 
-        type="text" 
+        type="text"
+        id="name-field"
+        name="name"
         
         @isset($name)
             value="{{ $name }}"

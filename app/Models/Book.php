@@ -10,7 +10,7 @@ class Book extends Model
     use HasFactory;
     protected $fillable = ['name'];
 
-    public function chapters(){
-        return $this->hasMany(Chapter::class, 'book_id');
+    public function category(){
+        return $this->belongsTo(Category::class);
     }
 }

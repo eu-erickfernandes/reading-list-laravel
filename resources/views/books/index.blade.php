@@ -1,8 +1,8 @@
 <x-layout title='Books'>
     <h1>Books</h1>
-    
-    <p>Welcome {{ $name }}</p>
 
+    <a href="{{ route('books.create') }}">Add book</a>
+    
     @isset($successMessage)
         <p>{{ $successMessage }}</p>
     @endisset

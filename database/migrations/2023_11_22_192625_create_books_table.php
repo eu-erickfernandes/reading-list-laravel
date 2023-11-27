@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id')->constrained();
+
             $table->string('name', 100);
             $table->timestamps();
         });

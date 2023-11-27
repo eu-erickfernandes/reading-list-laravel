@@ -12,7 +12,7 @@
     <body>
         <header>
             <a href="{{ route('books.index') }}">Books</a>
-            <a href="{{ route('books.create') }}">Add book</a>
+            <a href="{{ route('categories.index') }}">Categories</a>
         </header>
 
         
