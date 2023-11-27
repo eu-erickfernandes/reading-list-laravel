@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BookFormRequest;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,7 @@ class BooksController extends Controller
         return view('books.create');
     }
 
-    public function store(Request $request){
+    public function store(BookFormRequest $request){
 
         $book = Book::create($request->all());
 
@@ -41,7 +42,7 @@ class BooksController extends Controller
             ->with('book', $book);
     }
 
-    public function update(Book $book, Request $request){
+    public function update(Book $book, BookFormRequest $request){
         $book->update($request->all());
 
         return to_route('books.index')
