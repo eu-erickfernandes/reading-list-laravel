@@ -15,6 +15,8 @@
             <a href="{{ route('categories.index') }}">Categories</a>
         </header>
 
+        <h1>{{ $title }}</h1>
+
         
         @if ($errors->any())
             <div class="alert alert-danger">

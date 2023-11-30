@@ -1,6 +1,4 @@
 <x-layout title='Books'>
-    <h1>Books</h1>
-
     <a href="{{ route('books.create') }}">Add book</a>
     
     @isset($successMessage)
@@ -10,7 +8,7 @@
     <ul>
         @foreach ($books as $book)
             <li>
-                <span>{{ $book->name }}</span>
+                <span>{{ $book->name }} - {{ $book->category->name }}</span>
 
                 <a href="{{ route('books.edit', $book->id) }}">Edit</a>
 

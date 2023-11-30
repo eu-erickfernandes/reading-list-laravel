@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BookFormRequest;
 use App\Models\Book;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class BooksController extends Controller
@@ -19,10 +20,14 @@ class BooksController extends Controller
     }
 
     public function create(Request $request){
-        return view('books.create');
+        $categories = Category::all();
+
+        return view('books.create')
+            ->with('categories', $categories);
     }
 
     public function store(BookFormRequest $request){
+        // dd($request);
 
         $book = Book::create($request->all());
 
@@ -31,8 +36,11 @@ class BooksController extends Controller
     }
 
     public function edit(Book $book){
+        $categories = Category::all();
+        
         return view("books.edit")
-            ->with('book', $book);
+            ->with('book', $book)
+            ->with('categories', $categories);
     }
 
     public function update(Book $book, BookFormRequest $request){

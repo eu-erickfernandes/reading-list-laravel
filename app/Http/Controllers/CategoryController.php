@@ -22,9 +22,22 @@ class CategoryController extends Controller
     }
 
     public function store(Request $request){
+        dd($request);
         $category = Category::create($request->all());
 
         return to_route('categories.index')
             ->with('message.success', "Category '{$category->name}' created");
+    }
+
+    public function edit(Category $category){
+        return view('categories.edit')
+            ->with('category', $category);
+    }
+
+    public function update(Category $category, Request $request){
+        $category->update($request->all());
+
+        return to_route('categories.index')
+            ->with('message.success', "Category '{$category->name}' updated");
     }
 }

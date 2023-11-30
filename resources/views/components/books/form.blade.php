@@ -16,5 +16,14 @@
         @endisset
     >
 
+    <label for="category-field">Category</label>
+    
+    
+    <select name="category_id" id="category-field">
+        @foreach($categories as $category)
+            <option value="{{ $category->id }}">{{ $category->name }}</option>
+        @endforeach
+    </select>
+
     <button>Submit</button>
 </form>
