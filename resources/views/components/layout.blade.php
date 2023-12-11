@@ -6,19 +6,25 @@
 
         <title>Reading List | {{ $title }}</title>
 
-        <link rel="stylesheet" href="{{ asset('css/base.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/global/reset.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/global/layout.css') }}">
+
+        <!-- LOCAL SCOPE CSS -->
+        @isset($css)
+            <link rel="stylesheet" href="{{ $css }}">
+        @endisset
     </head>
 
     <body>
-        <header>
+        <!-- <header>
             <a href="{{ route('books.index') }}">Books</a>
             <a href="{{ route('categories.index') }}">Categories</a>
         </header>
 
-        <h1>{{ $title }}</h1>
+        <h1>{{ $title }}</h1> -->
 
         
-        @if ($errors->any())
+        <!-- @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
                     @foreach ($errors->all() as $error)
@@ -26,8 +32,10 @@
                     @endforeach
                 </ul>
             </div>
-        @endif
-        
-        {{ $slot }}
+        @endif -->
+
+        <main>
+            {{ $slot }}
+        </main>
     </body>
 </html>

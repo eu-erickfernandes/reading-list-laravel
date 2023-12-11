@@ -12,10 +12,13 @@ class BooksController extends Controller
     public function index(){
         $books = Book::all();
 
+        $categories = Category::all();
+
         $successMessage = session('message.success');
 
         return view('books.index')
             ->with('books', $books)
+            ->with('categories', $categories)
             ->with('successMessage', $successMessage);
     }
 

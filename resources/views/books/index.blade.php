@@ -1,5 +1,5 @@
-<x-layout title='Books'>
-    <a href="{{ route('books.create') }}">Add book</a>
+<x-layout title='My books' css="{{ asset('css/views/books/index.css') }}">
+    <!-- <a href="{{ route('books.create') }}">Add book</a>
     
     @isset($successMessage)
         <p>{{ $successMessage }}</p>
@@ -20,5 +20,19 @@
                 </form>
             </li>
         @endforeach
-    </ul>
+    </ul> -->
+
+    <nav class="navigation">
+        <menu class="menu">
+            @foreach ($categories as $category)
+                <li class="item">{{ $category->name }}</li>
+            @endforeach
+
+            <li class="item">
+                <a href="{{ route('books.create') }}">Add</a>
+            </li>
+        </menu>
+
+        <span class="user"></span>
+    </nav>
 </x-layout>
