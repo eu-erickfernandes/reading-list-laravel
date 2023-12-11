@@ -11,12 +11,14 @@
     & .menu{
         gap: 1rem;
 
-        & .item{
+        & li{
+            border-bottom: 2px solid transparent;
+            box-sizing: border-box;
             cursor: pointer;
-            padding-bottom: .5rem;
+            padding-bottom: 1rem;
 
-            &:hover{
-                border-bottom: 1px solid #CCC;
+            &:is(:hover, .active){
+                border-bottom-color: #CCC;
             }
         }
     }
@@ -25,7 +27,7 @@
         aspect-ratio: 1;
         background-color: #CCC;
         border-radius: 100vw;
-        height: 1rem;
+        height: 1.5rem;
     }
 }
 

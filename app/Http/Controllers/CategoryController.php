@@ -22,7 +22,6 @@ class CategoryController extends Controller
     }
 
     public function store(Request $request){
-        dd($request);
         $category = Category::create($request->all());
 
         return to_route('categories.index')

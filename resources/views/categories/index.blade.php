@@ -1,4 +1,7 @@
 <x-layout title="Categories">
+    <x-header
+        title="Categories"
+    />
     <a href="{{ route('categories.create') }}">Add category</a>
 
     @isset($successMessage)

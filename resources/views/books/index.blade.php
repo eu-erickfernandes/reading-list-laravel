@@ -25,14 +25,29 @@
     <nav class="navigation">
         <menu class="menu">
             @foreach ($categories as $category)
-                <li class="item">{{ $category->name }}</li>
+                @if ($loop->first)
+                    <li class="item active">{{ $category->name }}</li>
+                @else
+                    <li class="item">{{ $category->name }}</li>
+                @endif
+
             @endforeach
 
-            <li class="item">
-                <a href="{{ route('books.create') }}">Add</a>
+            <li>
+                <a href="{{ route('categories.create') }}">Add</a>
             </li>
         </menu>
 
         <span class="user"></span>
     </nav>
+
+    <ul>
+        @foreach ($books as $book)
+            <li>
+                {{ $book->name }} {{ $book->category->name }}
+            </li>
+        @endforeach
+    </ul>
+
+
 </x-layout>
