@@ -51,6 +51,10 @@
 
     @foreach ($categories as $category)
         <ul data-nav-container="{{ $category->id }}">
+            <li>
+                <a href="{{ route('books.create') }}">Add book</a>
+            </li>
+
             @foreach ($books as $book)
                 @if ($book->category->id == $category->id)
                     <li>
