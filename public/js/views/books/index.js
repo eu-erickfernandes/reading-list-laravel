@@ -13,9 +13,9 @@ const activateTab = (tab) => {
 const init = () => {
     const currentTab = document.querySelector('[data-nav-tab].active')
     const tabId = currentTab.getAttribute('data-nav-tab')
-
+    
     const containers = document.querySelectorAll('[data-nav-container]')
-
+    
     containers.forEach((container) => {
         const containerId = container.getAttribute('data-nav-container')
 
