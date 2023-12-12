@@ -22,7 +22,7 @@
         @endforeach
     </ul> -->
 
-    <nav class="navigation">
+    <nav class="category-navigation">
         <menu class="menu">
             @foreach ($categories as $category)
                 @if ($loop->first)
@@ -50,7 +50,7 @@
     </ul> -->
 
     @foreach ($categories as $category)
-        <ul data-nav-container="{{ $category->id }}">
+        <ul class="books-container" data-nav-container="{{ $category->id }}">
             <li>
                 <a href="{{ route('books.create') }}">Add book</a>
             </li>

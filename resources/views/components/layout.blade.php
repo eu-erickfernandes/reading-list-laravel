@@ -8,11 +8,13 @@
 
         <link rel="stylesheet" href="{{ asset('css/global/reset.css') }}">
         <link rel="stylesheet" href="{{ asset('css/global/layout.css') }}">
-
+        
         <!-- LOCAL SCOPE CSS -->
         @isset($css)
             <link rel="stylesheet" href="{{ $css }}">
         @endisset
+
+        <link rel="stylesheet" href="{{ asset('css/global/utils.css') }}">
     </head>
 
     <body>
