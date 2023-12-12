@@ -10,28 +10,30 @@ const activateTab = (tab) => {
     tab.classList.add('active')
 }
 
-const init = (id) => {
-    console.log(id)
+const init = () => {
+    const currentTab = document.querySelector('[data-nav-tab].active')
+    const tabId = currentTab.getAttribute('data-nav-tab')
+
+    const containers = document.querySelectorAll('[data-nav-container]')
+
+    containers.forEach((container) => {
+        const containerId = container.getAttribute('data-nav-container')
+
+        containerId == tabId ? container.classList.remove('hidden') : container.classList.add('hidden')
+    })
 }
 
 const switchTag = (event) => {
     const tab = event.target
-    const tabId = tab.getAttribute('data-nav-tab')
 
     resetTabs()
     activateTab(tab)
 
-    init(tabId)
-
-    // const containers = document.querySelectorAll('[data-nav-container]')
-
-    // containers.forEach((container) => {
-    //     const containerId = container.getAttribute('data-nav-container')
-
-    //     containerId == tabId ? container.classList.remove('hidden') : container.classList.add('hidden')
-    // })
+    init()
 }
 
 tabs.forEach((tab) => {
     tab.addEventListener('click', switchTag)
 })
+
+init()
