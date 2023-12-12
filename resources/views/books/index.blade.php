@@ -26,9 +26,9 @@
         <menu class="menu">
             @foreach ($categories as $category)
                 @if ($loop->first)
-                    <li class="item active">{{ $category->name }}</li>
+                    <li class="item active" data-nav-tab="{{ $category->id }}">{{ $category->name }}</li>
                 @else
-                    <li class="item">{{ $category->name }}</li>
+                    <li class="item" data-nav-tab="{{ $category->id }}">{{ $category->name }}</li>
                 @endif
 
             @endforeach
@@ -41,13 +41,25 @@
         <span class="user"></span>
     </nav>
 
-    <ul>
+    <!-- <ul>
         @foreach ($books as $book)
             <li>
                 {{ $book->name }} {{ $book->category->name }}
             </li>
         @endforeach
-    </ul>
+    </ul> -->
 
+    @foreach ($categories as $category)
+        <ul data-nav-container="{{ $category->id }}">
+            @foreach ($books as $book)
+                @if ($book->category->id == $category->id)
+                    <li>
+                        {{ $book->name }} {{ $book->category->name }}
+                    </li>
+                @endif
+            @endforeach
+        </ul>
+    @endforeach
 
+    <script src="{{ asset('js/views/books/index.js') }}"></script>
 </x-layout>
