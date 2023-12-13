@@ -49,16 +49,24 @@
         @endforeach
     </ul> -->
 
+    <a href="{{ route('books.create') }}">Add book</a>
+    
     @foreach ($categories as $category)
         <ul class="books-container" data-nav-container="{{ $category->id }}">
-            <li>
-                <a href="{{ route('books.create') }}">Add book</a>
-            </li>
 
             @foreach ($books as $book)
                 @if ($book->category->id == $category->id)
                     <li>
                         {{ $book->name }} {{ $book->category->name }}
+
+                        <a href="{{ route('books.edit', $book->id) }}">Edit</a>
+
+                        <form action="{{ route('books.destroy', $book->id) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            
+                            <button>Delete</button>
+                        </form>
                     </li>
                 @endif
             @endforeach
