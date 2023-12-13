@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained();
 
             $table->string('name', 100);
+            $table->boolean('readed');
             $table->timestamps();
         });
     }

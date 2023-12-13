@@ -30,9 +30,14 @@ class BooksController extends Controller
     }
 
     public function store(BookFormRequest $request){
-        // dd($request);
+        $book = new Book;
 
-        $book = Book::create($request->all());
+        $book->category_id = $request->category_id;
+
+        $book->name = $request->name;
+        $book->readed = false;
+
+        $book->save();
 
         return to_route('books.index')
             ->with('message.success', "Book '{$book->name}' created");
