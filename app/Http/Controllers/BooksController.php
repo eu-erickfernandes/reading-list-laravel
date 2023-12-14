@@ -65,4 +65,11 @@ class BooksController extends Controller
         return to_route('books.index')
             ->with('message.success', "Book '{$book->name}' deleted");
     }
+
+    public function markBook(Book $book){
+        $book->readed = !$book->readed;
+        $book->save();
+
+        return to_route('books.index');
+    }
 }

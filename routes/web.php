@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect('/books');
-});
+Route::redirect('/', '/books');
 
 // Route::controller(BooksController::class)->group(function () {
 //     Route::get('/books', 'index')->name('books.index');
@@ -26,4 +24,6 @@ Route::get('/', function () {
 // });
 
 Route::resource('/books', BooksController::class);
+Route::put('/markbook/{book}', [BooksController::class, 'markBook'])->name('books.markBook');
+
 Route::resource('/categories', CategoryController::class);

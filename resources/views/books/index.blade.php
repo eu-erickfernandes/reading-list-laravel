@@ -57,7 +57,14 @@
             @foreach ($books as $book)
                 @if ($book->category->id == $category->id)
                     <li>
-                        {{ $book->name }} {{ $book->category->name }}
+                        <form action="{{ route('books.markBook', $book) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+
+                            <button>X</button>
+                        </form>
+
+                        {{ $book->name }} {{ $book->category->name }} {{ $book->readed }}
 
                         <a href="{{ route('books.edit', $book->id) }}">Edit</a>
 
