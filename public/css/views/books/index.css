@@ -7,6 +7,8 @@
 .category-navigation{
     border-bottom: 1px solid #CCC;
     justify-content: space-between;
+    padding-inline: 1rem;
+    padding-top: 1rem;
 
     & .menu{
         gap: 1rem;
@@ -31,15 +33,36 @@
     }
 }
 
+
+
 .books-container{
     display: flex;
     flex-direction: column;
 
     & li{
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
         padding: 1rem;
 
         &:hover{
             background-color: #e9e9e9;
+        }
+
+        & div{
+            align-items: center;
+            display: flex;
+            gap: .5rem;
+        }
+
+        & .label{
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+
+            & .book__category{
+                font-size: .75rem;
+            }
         }
     }
 }

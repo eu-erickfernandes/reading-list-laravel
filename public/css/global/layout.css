@@ -17,7 +17,6 @@ main{
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    padding: 1rem;
     width: 720px;
 }
 
@@ -25,7 +24,7 @@ main{
     border-bottom: 1px solid #CCC;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    padding-bottom: 1rem;
+    padding: 1rem;
     
     & h1{
         text-align: center;
