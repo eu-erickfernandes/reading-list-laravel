@@ -24,9 +24,11 @@
 
     <nav class="category-navigation">
         <menu class="menu">
+            <li class="item active" data-nav-tab="all">All</li>
+
             @foreach ($categories as $category)
                 @if ($loop->first)
-                    <li class="item active" data-nav-tab="{{ $category->id }}">{{ $category->name }}</li>
+                    <li class="item" data-nav-tab="{{ $category->id }}">{{ $category->name }}</li>
                 @else
                     <li class="item" data-nav-tab="{{ $category->id }}">{{ $category->name }}</li>
                 @endif
@@ -41,39 +43,69 @@
         <span class="user"></span>
     </nav>
 
-    <!-- <ul>
+    <a class="new-book-button" href="{{ route('books.create') }}">New book</a>
+    
+    <ul class="books-container" data-nav-container="all">
         @foreach ($books as $book)
             <li>
-                {{ $book->name }} {{ $book->category->name }}
+                <div>
+                    <form action="{{ route('books.markBook', $book) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+
+                        <button>{{ $book->readed }}</button>
+                    </form>
+
+                    <p class="label">
+                        <span>{{ $book->name }} </span>
+                        <span class="book__category">{{ $book->category->name }}</span>
+                    </p>
+                </div>
+
+                <div>
+                    <a href="{{ route('books.edit', $book->id) }}">Edit</a>
+                    
+                    <form action="{{ route('books.destroy', $book->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        
+                        <button>Delete</button>
+                    </form>
+                </div>
             </li>
         @endforeach
-    </ul> -->
+    </ul>
 
-    <a href="{{ route('books.create') }}">Add book</a>
-    
     @foreach ($categories as $category)
         <ul class="books-container" data-nav-container="{{ $category->id }}">
 
             @foreach ($books as $book)
                 @if ($book->category->id == $category->id)
                     <li>
-                        <form action="{{ route('books.markBook', $book) }}" method="POST">
-                            @csrf
-                            @method('PUT')
+                        <div>
 
-                            <button>X</button>
-                        </form>
-
-                        {{ $book->name }} {{ $book->category->name }} {{ $book->readed }}
-
-                        <a href="{{ route('books.edit', $book->id) }}">Edit</a>
-
-                        <form action="{{ route('books.destroy', $book->id) }}" method="post">
-                            @csrf
-                            @method('DELETE')
+                            <form action="{{ route('books.markBook', $book) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                
+                                <button>{{ $book->readed }}</button>
+                            </form>
                             
-                            <button>Delete</button>
-                        </form>
+                            <p class="label">
+                                <span>{{ $book->name }} </span>
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <a href="{{ route('books.edit', $book->id) }}">Edit</a>
+
+                            <form action="{{ route('books.destroy', $book->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                
+                                <button>Delete</button>
+                            </form>
+                        </div>
                     </li>
                 @endif
             @endforeach
