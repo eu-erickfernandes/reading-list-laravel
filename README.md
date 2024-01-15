@@ -7,7 +7,7 @@ For the purpose of studying the Laravel Framework, i decided to create a simple 
 <!-- ## 👁 Preview -->
 <!-- // Preview -->
 
-<!-- ## ✅ Tech stack -->
-<!-- https://dev.to/envoy_/150-badges-for-github-pnk#database -->
+## ✅ Tech stack -->
+<!-- https://dev.to/envoy_/150-badges-for-github-pnk#database
 
 <!-- ## ⚒️ How to install -->
